@@ -20,12 +20,20 @@
             <img id="image" src="assets/mox.png">
         </a-assets>
 
-        <a-marker id="animated-marker" type="pattern" preset="custom" url="assets/marker.patt">
-            <a-gltf-model src="#modele3D" scale="1 1 1"></a-gltf-model>
+        <a-marker id="Marker1" type="pattern" preset="custom" url="assets/pattern-Marker1.patt" smooth="true" smooth-count="5">
+            <a-image src="#image" scale="5 5 1" rotation="-90 0 0" gesture-handler></a-image>
         </a-marker>
 
-        <a-marker id="animated-marker" type="pattern" preset="custom" url="assets/markerb.patt" smooth="true" smooth-count="5">
-            <a-image src="#image" scale="5 5 1" rotation="-90 0 0" gesture-handler></a-image>
+        <a-marker id="Marker2" type="pattern" preset="custom" url="assets/pattern-Marker2.patt" smooth="true" smooth-count="5">
+            <a-image src="#image" scale="3 3 1" rotation="-180 0 0" gesture-handler></a-image>
+        </a-marker>
+
+        <a-marker id="Marker3" type="pattern" preset="custom" url="assets/pattern-Marker3.patt" smooth="true" smooth-count="5">
+            <a-image src="#image" scale="5 1 1" rotation="-90 0 0" gesture-handler></a-image>
+        </a-marker>
+
+        <a-marker id="Marker4" type="pattern" preset="custom" url="assets/pattern-Marker4.patt" smooth="true" smooth-count="5">
+            <a-image src="#image" scale="1 5 1" rotation="-90 0 0" gesture-handler></a-image>
         </a-marker>
 
         <a-entity camera></a-entity>
