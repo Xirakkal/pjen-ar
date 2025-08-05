@@ -1,7 +1,8 @@
 <!doctype html>
-<html>
+<html lang="fr">
 
 <head>
+    <title>Réalité Augmentée au Jardin Botanique</title>
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
     <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
@@ -17,23 +18,11 @@
         <a-assets>
             <a-asset-item id="modele3D" src="assets/asset.glb"></a-asset-item>
 
-            <img id="image" src="assets/mox.png">
+            <img id="image" src="assets/mox.png" alt="">
         </a-assets>
 
-        <a-marker id="Marker1" type="pattern" preset="custom" url="assets/patt/pattern-Marker1.patt" smooth="true" smooth-count="5">
-            <a-image src="#image" scale="5 5 1" rotation="-90 0 0" gesture-handler></a-image>
-        </a-marker>
-
-        <a-marker id="Marker2" type="pattern" preset="custom" url="assets/patt/pattern-Marker2.patt" smooth="true" smooth-count="5">
-            <a-image src="#image" scale="3 3 1" rotation="-180 0 0" gesture-handler></a-image>
-        </a-marker>
-
-        <a-marker id="Marker3" type="pattern" preset="custom" url="assets/patt/pattern-Marker3.patt" smooth="true" smooth-count="5">
-            <a-image src="#image" scale="5 1 1" rotation="-90 0 0" gesture-handler></a-image>
-        </a-marker>
-
-        <a-marker id="Marker4" type="pattern" preset="custom" url="assets/patt/pattern-Marker4.patt" smooth="true" smooth-count="5">
-            <a-image src="#image" scale="1 5 1" rotation="-90 0 0" gesture-handler></a-image>
+        <a-marker id="Marker1" type="pattern" preset="custom" url="assets/patt/noir/pattern-Marker1.patt" smooth="true" smooth-count="5" raycaster="objects: .clickable">
+            <a-image src="#image" scale="5 5 1" rotation="-90 0 0" gesture-handler="rotationFactor: 0" class="clickable"></a-image>
         </a-marker>
 
         <a-entity camera></a-entity>
