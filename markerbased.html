@@ -24,10 +24,8 @@
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
     <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
-    <script
-        src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-detector.js"></script>
-    <script
-        src="./script/gesture-handler.js"></script>
+
+    <script src="./script/gesture-handler.js"></script>
 </head>
 
 <body style="margin: 0; overflow: hidden;">
@@ -42,16 +40,11 @@
         <!--Ginkgo Biloba-->
         <a-marker id="Marker1" type="pattern" preset="custom" url="assets/patt/marker.patt" smooth="true"
             smooth-count="5" raycaster="objects: .clickable">
-            <a-entity rotation="-90 0 0"> 
-                <a-sphere 
-                    src="#ginkgo_globe" 
-                    class="clickable" 
-                    rotation="0 0 0" 
-                    scale="1 1 1"
-                    gesture-handler="maxScale: 2; rotationFactorX: 10; rotationFactorY: 5; rotationFactorZ: 0;"
-                >
+            <a-entity rotation="0 0 0" position="0 1 0">
+                <a-sphere src="#ginkgo_globe" class="clickable" rotation="0 -49 0" scale="1 1 1"
+                    gesture-handler="maxScale: 2; rotationFactorX: 10; rotationFactorY: 5; rotationFactorZ: 0;">
                 </a-sphere>
-                                    <!-- animation="property: rotation; to: 0 360 0; loop: true; dur: 30000; easing: linear;" -->
+                <!-- animation="property: rotation; to: 0 360 0; loop: true; dur: 30000; easing: linear;" -->
             </a-entity>
         </a-marker>
 
