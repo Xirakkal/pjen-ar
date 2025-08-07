@@ -40,16 +40,18 @@
 
         <a-marker id="Marker1" type="pattern" preset="custom" url="assets/patt/marker.patt" smooth="true"
             smooth-count="5" raycaster="objects: .clickable">
-            <a-entity rotation="-90 0 0">
+            <a-entity rotation="-90 0 0"> 
                 <a-sphere 
                     src="#image" 
                     class="clickable" 
                     rotation="0 0 0" 
                     scale="1 1 1"
                     gesture-handler="maxScale: 2;"
-                    animation="property: rotation; to: 0 360 0; loop: true; dur: 30000; easing: linear;"
+
                 >
                 </a-sphere>
+
+                                    <!-- animation="property: rotation; to: 0 360 0; loop: true; dur: 30000; easing: linear;" -->
             </a-entity>
 
         </a-marker>
