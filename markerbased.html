@@ -40,7 +40,7 @@
 
         <a-marker id="Marker1" type="pattern" preset="custom" url="assets/patt/marker.patt" smooth="true"
             smooth-count="5" raycaster="objects: .clickable">
-            <a-sphere src="#image" class="clickable" rotation="0 0 0" gesture-handler class="clickable" scale="2 2 2"> <!--animation="property: rotation; to: 0 360 0; loop: true; dur: 35000; easing: linear;"-->
+            <a-sphere material="shader:phong" src="#image" class="clickable" rotation="0 0 0" scale="1 1 1" gesture-handler="maxScale: 2;" animation="property: rotation; to: 0 360 0; loop: true; dur: 35000; easing: linear;"> <!---->
             </a-sphere>
         </a-marker>
 
