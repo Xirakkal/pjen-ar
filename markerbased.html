@@ -33,18 +33,20 @@
 <body style="margin: 0; overflow: hidden;">
     <a-scene vr-mode-ui="enabled: false;" loading-screen="enabled: false;" renderer="logarithmicDepthBuffer: true;"
         arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;" id="scene" embedded gesture-detector>
+
         <a-assets>
             <img id="image" src="assets/earth_atmos_2048.jpg" alt="">
         </a-assets>
 
         <a-marker id="Marker1" type="pattern" preset="custom" url="assets/patt/marker.patt" smooth="true"
             smooth-count="5" raycaster="objects: .clickable">
-            <a-sphere src="#image" class="clickable" rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 35000; easing: linear;">
+            <a-sphere src="#image" class="clickable" rotation="0 0 0"
+                animation="property: rotation; to: 0 360 0; loop: true; dur: 35000; easing: linear;" gesture-handler>
             </a-sphere>
         </a-marker>
 
         <body>
-        <a-entity camera></a-entity>
+            <a-entity camera></a-entity>
     </a-scene>
 </body>
 
