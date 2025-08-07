@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+    <!--
+    Ce site utilise les scripts suivants sous licence MIT :
+
+    A-Frame, Copyright © 2015-2025 A-Frame authors.
+    Licence : https://github.com/aframevr/aframe/blob/master/LICENSE
+
+    AR.js, Copyright (c) 2020 AR.js
+    Licence : https://github.com/AR-js-org/AR.js/blob/master/LICENSE
+    AR.js embarque du code issu de jsartoolkit5 (port de ARToolKit, licence GPL/LGPL selon version) – incluant le copyright par Hirokazu Kato et les auteurs ARToolKit, voir https://github.com/artoolkitx/jsartoolkit5
+    
+    A-Frame Extras, Copyright (c) 2016 Don McCurdy
+    Licence : https://github.com/c-frame/aframe-extras/blob/master/LICENSE
+
+    AR.js Studio Backend, Copyright (c) 2019 Nicolò Carpignoli, nicolocarpignoli@gmail.com
+    Licence : https://github.com/AR-js-org/studio-backend/blob/master/LICENSE
+    -->
+
+    <meta charset="UTF-8">
+    <title>RA par marqueur</title>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+    <script
+        src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-detector.js"></script>
+    <script
+        src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-handler.js"></script>
+</head>
+
+<body style="margin: 0; overflow: hidden;">
+    <a-scene vr-mode-ui="enabled: false;" loading-screen="enabled: false;" renderer="logarithmicDepthBuffer: true;"
+        arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;" id="scene" embedded gesture-detector>
+        <a-assets>
+            <img id="image" src="assets/earth_atmos_2048.jpg" alt="">
+        </a-assets>
+
+        <a-marker id="Marker1" type="pattern" preset="custom" url="assets/patt/marker.patt" smooth="true"
+            smooth-count="5" raycaster="objects: .clickable">
+            <a-sphere src="#image" class="clickable" rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 35000; easing: linear;">
+            </a-sphere>
+        </a-marker>
+
+        <body>
+        <a-entity camera></a-entity>
+    </a-scene>
+</body>
+
+</html>
