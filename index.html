@@ -1,15 +1,74 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
+
 <head>
+    <!--
+    Ce site utilise les scripts suivants sous licence MIT :
+
+    A-Frame, Copyright © 2015-2025 A-Frame authors.
+    Licence : https://github.com/aframevr/aframe/blob/master/LICENSE
+
+    AR.js, Copyright (c) 2020 AR.js
+    Licence : https://github.com/AR-js-org/AR.js/blob/master/LICENSE
+    AR.js embarque du code issu de jsartoolkit5 (port de ARToolKit, licence GPL/LGPL selon version) – incluant le copyright par Hirokazu Kato et les auteurs ARToolKit, voir https://github.com/artoolkitx/jsartoolkit5
+    
+    A-Frame Extras, Copyright (c) 2016 Don McCurdy
+    Licence : https://github.com/c-frame/aframe-extras/blob/master/LICENSE
+
+    AR.js Studio Backend, Copyright (c) 2019 Nicolò Carpignoli, nicolocarpignoli@gmail.com
+    Licence : https://github.com/AR-js-org/studio-backend/blob/master/LICENSE
+    -->
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jardin Botanique RA</title>
+    <title>RA par marqueur</title>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+    <script
+        src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-detector.js"></script>
+    <script
+        src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-handler.js"></script>
+
+    <!--testing-->
+
+    <script src="//cdn.jsdelivr.net/npm/globe-ar"></script>
 </head>
-<body>
-    <h1>Accueil</h1>
-    <a href="./markerbased.html">Affichage par Marqueur (fonctionnel)</a>
-    <br>
-    <br>
-    <a href="./gpsbased.html">Affichage par GPS (à tester)</a>
+
+<body style="margin: 0; overflow: hidden;">
+    <a-scene vr-mode-ui="enabled: false;" loading-screen="enabled: false;" renderer="logarithmicDepthBuffer: true;"
+        arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;" id="scene" embedded gesture-detector>
+        <a-assets>
+            <img id="image" src="assets/mox.png" alt="">
+        </a-assets>
+
+        <a-marker id="Marker1" type="pattern" preset="custom" url="assets/patt/pattern-Marker1.patt" smooth="true"
+            smooth-count="5" raycaster="objects: .clickable">
+            <a-image src="#image" scale="5 5 1" rotation="-90 0 0" gesture-handler="rotationFactor: 0"
+                class="clickable"></a-image>
+        </a-marker>
+
+        <body>
+            <div id="globeViz"></div>
+
+            <script>
+                // Gen random data
+                const N = 300;
+                const gData = [...Array(N).keys()].map(() => ({
+                    lat: (Math.random() - 0.5) * 180,
+                    lng: (Math.random() - 0.5) * 360,
+                    size: Math.random() / 3,
+                    color: ['red', 'white', 'blue', 'green'][Math.round(Math.random() * 3)]
+                }));
+
+                new GlobeAR(document.getElementById('globeViz'))
+                    .globeImageUrl('//cdn.jsdelivr.net/npm/three-globe/example/img/earth-night.jpg')
+                    .pointsData(gData)
+                    .pointAltitude('size')
+                    .pointColor('color');
+            </script>
+        </body>
+        <a-entity camera></a-entity>
+    </a-scene>
 </body>
+
 </html>
