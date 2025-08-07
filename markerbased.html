@@ -44,11 +44,11 @@
             smooth-count="5" raycaster="objects: .clickable">
             <a-entity rotation="-90 0 0"> 
                 <a-sphere 
-                    src="#image" 
+                    src="#ginkgo_globe" 
                     class="clickable" 
                     rotation="0 0 0" 
                     scale="1 1 1"
-                    gesture-handler="maxScale: 2;"
+                    gesture-handler="maxScale: 2; rotationFactorX: 10; rotationFactorY: 5; rotationFactorZ: 0;"
                 >
                 </a-sphere>
                                     <!-- animation="property: rotation; to: 0 360 0; loop: true; dur: 30000; easing: linear;" -->

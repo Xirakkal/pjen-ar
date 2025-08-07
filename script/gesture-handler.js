@@ -3,12 +3,14 @@
 AFRAME.registerComponent('gesture-handler', {
     schema: {
         enabled: { default: true },
-        rotationFactor: { default: 5 },
+        rotationFactorX: { default: 5 },
+        rotationFactorY: { default: 5 },
+        rotationFactorZ: { default: 5 },
         minScale: { default: 0.3 },
         maxScale: { default: 8 },
     },
 
-    init: function() {
+    init: function () {
         this.handleScale = this.handleScale.bind(this);
         this.handleRotation = this.handleRotation.bind(this);
 
@@ -25,7 +27,7 @@ AFRAME.registerComponent('gesture-handler', {
         });
     },
 
-    update: function() {
+    update: function () {
         if (this.data.enabled) {
             this.el.sceneEl.addEventListener('onefingermove', this.handleRotation);
             this.el.sceneEl.addEventListener('twofingermove', this.handleScale);
@@ -35,21 +37,23 @@ AFRAME.registerComponent('gesture-handler', {
         }
     },
 
-    remove: function() {
+    remove: function () {
         this.el.sceneEl.removeEventListener('onefingermove', this.handleRotation);
         this.el.sceneEl.removeEventListener('twofingermove', this.handleScale);
     },
 
-    handleRotation: function(event) {
+    handleRotation: function (event) {
         if (this.isVisible) {
-                this.el.object3D.rotation.y +=
-                event.detail.positionChange.x * this.data.rotationFactor;
-            /* this.el.object3D.rotation.x +=
-                event.detail.positionChange.y * this.data.rotationFactor; */
+            this.el.object3D.rotation.y +=
+                event.detail.positionChange.x * this.data.rotationFactorX;
+            this.el.object3D.rotation.x +=
+                event.detail.positionChange.y * this.data.rotationFactorY;
+            this.el.object3D.rotation.x +=
+                event.detail.positionChange.z * this.data.rotationFactorZ;
         }
     },
 
-    handleScale: function(event) {
+    handleScale: function (event) {
         if (this.isVisible) {
             this.scaleFactor *=
                 1 + event.detail.spreadChange / event.detail.startSpread;
