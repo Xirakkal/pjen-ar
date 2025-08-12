@@ -21,17 +21,24 @@
     -->
 
     <meta charset="UTF-8">
-    <title>RA par marqueur</title>
-    <link rel="stylesheet" href="./main.css">
+    <title>Arbres Remarquables</title>
+
+    <!--Feuilles de style et polices-->
+    <?php include 'include/styles.php' ?>
+
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
     <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
     <script src="./script/gesture.js"></script>
+
+    <!--Garder l'écran allumé avec WakeLock-->
+
+    <script src="./script/wakelock.js"></script>
 </head>
 
 <body class="body_ar">
 
-    <a class="bouton" href="./index.html">Retour au menu</a>
+    <a class="bouton" href="./index.php"><-- Retour au menu</a>
 
     <a-scene vr-mode-ui="enabled: false;" loading-screen="enabled: false;" renderer="logarithmicDepthBuffer: true;"
         arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;" id="scene" embedded gesture-detector>
