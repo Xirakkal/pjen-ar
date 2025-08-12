@@ -60,6 +60,7 @@ a {
 footer {
     background-color: hsl(0, 0%, 96%);
     padding: 15px;
+    width: 100%;
 }
 
 footer p {
@@ -73,7 +74,7 @@ footer p {
 @media (min-device-width : 320px) {
 
     main,
-    footer {
+    .footer-content {
         width: 320px;
         margin: auto;
     }
@@ -87,7 +88,7 @@ footer p {
     }
 
     main,
-    footer {
+    .footer-content {
         width: 320px;
         margin: auto;
     }
