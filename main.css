@@ -71,7 +71,9 @@ footer p {
 
 /*Styles pour les tablettes*/
 @media (min-device-width : 320px) {
-    main {
+
+    main,
+    footer {
         width: 320px;
         margin: auto;
     }
