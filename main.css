@@ -59,8 +59,8 @@ a {
 
 footer {
     background-color: hsl(0, 0%, 96%);
-    padding: 15px;
     width: 100%;
+    padding: 15px 0;
 }
 
 footer p {
