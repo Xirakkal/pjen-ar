@@ -15,41 +15,111 @@
     A-Frame Extras, Copyright (c) 2016 Don McCurdy
     Licence : https://github.com/c-frame/aframe-extras/blob/master/LICENSE
 
-    AR.js Studio Backend, Copyright (c) 2019 Nicolò Carpignoli, nicolocarpignoli@gmail.com
-    Licence : https://github.com/AR-js-org/studio-backend/blob/master/LICENSE
+    AR.js Gesture Handler et Gesture Detector, Copyright (c) Fabio Cortés
+    Licence : https://github.com/fcor/arjs-gestures/blob/master/LICENSE.md
+    Ce script a été modifié pour permettre uniquement la rotation horizontale
     -->
 
     <meta charset="UTF-8">
     <title>RA par marqueur</title>
+    <link rel="stylesheet" href="./main.css">
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
     <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
-
     <script src="./script/gesture.js"></script>
 </head>
 
-<body style="margin: 0; overflow: hidden;">
+<body class="body_ar">
+
+    <a class="bouton" href="./index.html">Retour au menu</a>
+
     <a-scene vr-mode-ui="enabled: false;" loading-screen="enabled: false;" renderer="logarithmicDepthBuffer: true;"
         arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;" id="scene" embedded gesture-detector>
 
+        <!--Chargement des textures, les balises img sont "décoratives" d'un point de vue d'accessibilité-->
         <a-assets>
-            <img id="image" src="assets/earth_atmos_2048.jpg" alt="">
-            <img id="ginkgo_globe" src="assets/ginkgo_globe.png" alt="">
+            <img id="globe" src="assets/globes/globe.jpg" alt="">
+            <img id="ginkgo_globe" src="assets/globes/ginkgo_globe.png" alt="">
+            <img id="populusnigra_globe" src="assets/globes/populusnigra_globe.png" alt="">
+            <img id="cedrusatlantica_globe" src="assets/globes/cedrusatlantica_globe.png" alt="">
+            <img id="cupressusnootkatensis_globe" src="assets/globes/cupressusnootkatensis_globe.png" alt="">
+            <img id="taxodiumdistichum_globe" src="assets/globes/taxodiumdistichum_globe.png" alt="">
+            <img id="juniperusdrupacea_globe" src="assets/globes/juniperusdrupacea_globe.png" alt="">
         </a-assets>
 
+        <!--
+        Reconnaissance des marqueurs et affichage des globes :
+        La valeur de rotation (pécisément l'axe X) de <a-entity> est à modifier selon l'inclinaison du marqueur.
+        La valeur de rotation (précisément l'axe Y) de <a-sphere> est à ajuster pour chaque instance afin d'afficher la zone géographique coloriée dès le départ.
+        Les animations ont été désactivées car icompatibles avec la manipulation. Ces propriétés sont des attributs de la balise <a-sphere>.
+        -->
+
         <!--Ginkgo Biloba-->
-        <a-marker id="Marker1" type="pattern" preset="custom" url="assets/patt/marker.patt" smooth="true"
+        <a-marker id="Marker1" type="pattern" preset="custom" url="assets/patt/pattern-Marker1.patt" smooth="true"
             smooth-count="5" raycaster="objects: .clickable">
             <a-entity rotation="0 0 0" position="0 1 0">
                 <a-sphere src="#ginkgo_globe" class="clickable" rotation="0 -49 0" scale="1 1 1"
-                    gesture-handler="maxScale: 1;">
+                    gesture-handler="minScale: 1; maxScale: 2;">
                 </a-sphere>
                 <!-- animation="property: rotation; to: 0 360 0; loop: true; dur: 30000; easing: linear;" -->
             </a-entity>
         </a-marker>
 
-        <body>
-            <a-entity camera></a-entity>
+        <!--Populus Nigra-->
+        <a-marker id="Marker2" type="pattern" preset="custom" url="assets/patt/pattern-Marker2.patt" smooth="true"
+            smooth-count="5" raycaster="objects: .clickable">
+            <a-entity rotation="0 0 0" position="0 1 0">
+                <a-sphere src="#populusnigra_globe" class="clickable" rotation="0 -49 0" scale="1 1 1"
+                    gesture-handler="minScale: 1; maxScale: 2;">
+                </a-sphere>
+                <!-- animation="property: rotation; to: 0 360 0; loop: true; dur: 30000; easing: linear;" -->
+            </a-entity>
+        </a-marker>
+
+        <!--Cedrus Atlantica-->
+        <a-marker id="Marker3" type="pattern" preset="custom" url="assets/patt/pattern-Marker3.patt" smooth="true"
+            smooth-count="5" raycaster="objects: .clickable">
+            <a-entity rotation="0 0 0" position="0 1 0">
+                <a-sphere src="#cedrusatlantica_globe" class="clickable" rotation="0 -49 0" scale="1 1 1"
+                    gesture-handler="minScale: 1; maxScale: 2;">
+                </a-sphere>
+                <!-- animation="property: rotation; to: 0 360 0; loop: true; dur: 30000; easing: linear;" -->
+            </a-entity>
+        </a-marker>
+
+        <!--Cupressus Nootkatensis-->
+        <a-marker id="Marker4" type="pattern" preset="custom" url="assets/patt/pattern-Marker4.patt" smooth="true"
+            smooth-count="5" raycaster="objects: .clickable">
+            <a-entity rotation="0 0 0" position="0 1 0">
+                <a-sphere src="#cupressusnootkatensis_globe" class="clickable" rotation="0 -49 0" scale="1 1 1"
+                    gesture-handler="minScale: 1; maxScale: 2;">
+                </a-sphere>
+                <!-- animation="property: rotation; to: 0 360 0; loop: true; dur: 30000; easing: linear;" -->
+            </a-entity>
+        </a-marker>
+
+        <!--Taxodium Distichum-->
+        <a-marker id="Marker5" type="pattern" preset="custom" url="assets/patt/pattern-Marker5.patt" smooth="true"
+            smooth-count="5" raycaster="objects: .clickable">
+            <a-entity rotation="0 0 0" position="0 1 0">
+                <a-sphere src="#taxodiumdistichum_globe" class="clickable" rotation="0 -49 0" scale="1 1 1"
+                    gesture-handler="minScale: 1; maxScale: 2;">
+                </a-sphere>
+                <!-- animation="property: rotation; to: 0 360 0; loop: true; dur: 30000; easing: linear;" -->
+            </a-entity>
+        </a-marker>
+
+        <!--Juniperus Drupacea-->
+        <a-marker id="Marker6" type="pattern" preset="custom" url="assets/patt/pattern-Marker6.patt" smooth="true"
+            smooth-count="5" raycaster="objects: .clickable">
+            <a-entity rotation="0 0 0" position="0 1 0">
+                <a-sphere src="#juniperusdrupacea_globe" class="clickable" rotation="0 -49 0" scale="1 1 1"
+                    gesture-handler="minScale: 1; maxScale: 2;">
+                </a-sphere>
+                <!-- animation="property: rotation; to: 0 360 0; loop: true; dur: 30000; easing: linear;" -->
+            </a-entity>
+        </a-marker>
+        <a-entity camera></a-entity>
     </a-scene>
 </body>
 
