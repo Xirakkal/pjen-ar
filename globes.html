@@ -40,6 +40,14 @@
     <!--Garder l'écran allumé avec WakeLock-->
 
     <script src="./script/wakelock.js"></script>
+
+    <!--Détecter Samsung Internet et avertir les usagers du bug sur ce navigateur-->
+    <script>
+        if (navigator.userAgent.match(/SAMSUNG|Samsung|SGH-[I|N|T]|GT-[I|N]|SM-[A|N|P|T|Z]|SHV-E|SCH-[I|J|R|S]|SPH-L/i)) {
+            console.log("it's Samsung");
+            alert("Vous sembblez utiliser un navigateur non supporté. Il est recommandé d'utiliser Chrome.")
+        }
+    </script>
 </head>
 
 <body class="body_ar">
@@ -48,7 +56,8 @@
 
             <a-scene vr-mode-ui="enabled: false;" loading-screen="enabled: false;"
                 renderer="logarithmicDepthBuffer: true;"
-                arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;" id="scene" gesture-detector embedded>
+                arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;" id="scene" gesture-detector
+                embedded>
 
                 <!--Chargement des textures, les balises img sont "décoratives" d'un point de vue d'accessibilité-->
                 <a-assets>
